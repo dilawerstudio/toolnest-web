@@ -2,7 +2,9 @@ import React from 'react';
 import { 
   FileText, Hash, Type, Calendar, Percent, ShieldCheck, QrCode, 
   Image, Maximize2, RefreshCw, FileArchive, Files, Scissors, 
-  Barcode, Scale, Braces, Link, Binary, Sparkles, Mail, MessageSquare, ArrowRight 
+  Barcode, Scale, Braces, Link, Binary, Sparkles, Mail, MessageSquare, ArrowRight,
+  Eraser, ArrowUpDown, Palette, Key, Fingerprint, Clock, Code2,
+  GitCompare, KeyRound, Database, AlignLeft, FileCode, ArrowRightLeft, Code
 } from 'lucide-react';
 import { ToolItem } from '../../types/tool';
 
@@ -28,6 +30,20 @@ const iconMap: Record<string, React.ElementType> = {
   Sparkles,
   Mail,
   MessageSquare,
+  Eraser,
+  ArrowUpDown,
+  Palette,
+  Key,
+  Fingerprint,
+  Clock,
+  Code2,
+  GitCompare,
+  KeyRound,
+  Database,
+  AlignLeft,
+  FileCode,
+  ArrowRightLeft,
+  Code,
 };
 
 interface ToolCardProps {

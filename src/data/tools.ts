@@ -7,7 +7,6 @@ export const CATEGORIES = [
   { id: 'dev', name: 'Developer Tools', description: 'Formatters, decoders, and technical workflow helpers' },
   { id: 'image', name: 'Image Tools', description: 'Fast client-side image transformations and optimization' },
   { id: 'pdf', name: 'PDF Tools', description: 'Browser-based document reorganization and compression' },
-  { id: 'ai', name: 'AI Tools (Preview)', description: 'Upcoming smart language and creative generation assistants' },
 ] as const;
 
 export const TOOLS: ToolItem[] = [
@@ -120,6 +119,74 @@ export const TOOLS: ToolItem[] = [
       }
     ],
     relatedToolIds: ['word-counter', 'character-counter', 'json-formatter']
+  },
+  {
+    id: 'text-cleaner',
+    name: 'Text Cleaner',
+    category: 'text',
+    categoryName: 'Text Tools',
+    description: 'Clean and sanitize messy text: remove duplicate spaces, trim line edges, collapse blank lines, eliminate duplicate lines, and sort lines.',
+    iconName: 'Eraser',
+    isImplemented: true,
+    popular: true,
+    tags: ['text', 'clean', 'cleaner', 'whitespace', 'spaces', 'trim', 'empty lines', 'duplicates', 'sort', 'format text'],
+    features: [
+      'Collapse repeated spaces and tabs into clean single spaces',
+      'Trim leading and trailing whitespace from every line',
+      'Remove empty lines and collapse multiple blank lines',
+      'Eliminate duplicate lines and normalize CRLF line breaks',
+      'Instant alphabetical A-Z and Z-A line sorting',
+      'Before and after character, word, and line count comparison',
+      'One-click complete deep clean button'
+    ],
+    howToUse: [
+      'Paste or type your unformatted or messy text into the editor.',
+      'Click any individual cleaning action or use "One-Click Complete Clean".',
+      'Inspect the cleaned result side-by-side with live line/character metrics.',
+      'Copy the cleaned text or download it as a .txt file.'
+    ],
+    faqs: [
+      {
+        question: 'Is my text transmitted over the internet?',
+        answer: 'No. All string manipulation executes 100% locally in your browser memory.'
+      },
+      {
+        question: 'Can I sort lines alphabetically?',
+        answer: 'Yes. You can sort lines A to Z or Z to A with a single click.'
+      }
+    ],
+    relatedToolIds: ['text-reverser', 'word-counter', 'case-converter']
+  },
+  {
+    id: 'text-reverser',
+    name: 'Text Reverser & Sorter',
+    category: 'text',
+    categoryName: 'Text Tools',
+    description: 'Reverse entire text, invert lines, reverse word order, and sort lines by alphabet or string length.',
+    iconName: 'ArrowUpDown',
+    isImplemented: true,
+    popular: false,
+    tags: ['reverse', 'reverser', 'backwards', 'flip text', 'sort lines', 'word order', 'length sort'],
+    features: [
+      'Multiple reversal modes: Entire Text, Each Line, and Word Sequence',
+      'Line sorting modes: Alphabetical (A-Z / Z-A) and Line Length (Shortest / Longest)',
+      'Optional toggles to remove empty lines and remove duplicate lines',
+      'Live character and line count monitoring',
+      'Instant copy and text file download'
+    ],
+    howToUse: [
+      'Enter your text into the source text area.',
+      'Select your desired reversal or sorting mode.',
+      'Optionally toggle duplicate or empty line removal.',
+      'Copy or download the transformed output.'
+    ],
+    faqs: [
+      {
+        question: 'Can I reverse words without reversing letters within the words?',
+        answer: 'Yes! Select the "Reverse Word Order" mode to keep individual words intact while reversing their sequence.'
+      }
+    ],
+    relatedToolIds: ['text-cleaner', 'case-converter', 'word-counter']
   },
   {
     id: 'age-calculator',
@@ -401,27 +468,31 @@ export const TOOLS: ToolItem[] = [
     categoryName: 'PDF Tools',
     description: 'Reduce the file size of PDF documents for email attachments and web upload limits using client-side compression.',
     iconName: 'FileArchive',
-    isImplemented: false,
-    popular: false,
-    tags: ['pdf', 'compress', 'shrink pdf', 'document', 'size', 'email attachment'],
+    isImplemented: true,
+    popular: true,
+    tags: ['pdf', 'compress', 'shrink pdf', 'document', 'size', 'email attachment', 'optimize pdf'],
     features: [
-      'In-browser PDF stream downsampling',
-      'Multiple compression presets (Basic, Medium, Maximum)',
-      'Zero file retention or server transfer'
+      'In-browser PDF stream and object stream compaction',
+      'Multiple compression presets (Low, Medium Balanced, High)',
+      'Side-by-side original vs compressed file size and reduction percentage',
+      'Zero file retention or server transfer: 100% private in client memory'
     ],
     howToUse: [
-      'Select the PDF file from your device.',
-      'Pick your target compression intensity.',
-      'Download the reduced PDF file.'
+      'Select or drag-and-drop a PDF file from your device.',
+      'Pick your preferred compression intensity (Low, Medium, or High).',
+      'Review the calculated file size and download your compressed PDF.'
     ],
     faqs: [
       {
         question: 'Are my confidential PDF documents safe?',
-        answer: 'Yes! Processing is designed to execute locally in client memory so your sensitive documents never touch a third-party server.'
+        answer: 'Yes! Processing executes entirely locally in your browser memory so your sensitive documents never touch a third-party server.'
+      },
+      {
+        question: 'Why did my PDF only shrink slightly?',
+        answer: 'PDFs that already contain pre-compressed images or compacted vector objects cannot be compressed further without downsampling embedded graphics.'
       }
     ],
-    relatedToolIds: ['pdf-merger', 'pdf-splitter', 'image-compressor'],
-    statusNote: 'Catalog Architecture Preview · In-browser PDF stream engine in staging'
+    relatedToolIds: ['pdf-merger', 'pdf-splitter', 'image-compressor']
   },
   {
     id: 'pdf-merger',
@@ -430,27 +501,31 @@ export const TOOLS: ToolItem[] = [
     categoryName: 'PDF Tools',
     description: 'Combine multiple PDF files into a single organized document with custom page reordering.',
     iconName: 'Files',
-    isImplemented: false,
-    popular: false,
-    tags: ['pdf', 'merge', 'combine', 'join pdf', 'bind', 'document'],
+    isImplemented: true,
+    popular: true,
+    tags: ['pdf', 'merge', 'combine', 'join pdf', 'bind', 'document', 'pdf joiner'],
     features: [
-      'Drag-and-drop file reordering',
-      'Merge unlimited pages into one master PDF',
-      'Fast client-side binary assembly'
+      'Interactive file list with drag-and-drop and up/down reordering',
+      'Merge unlimited pages into one unified master PDF document',
+      'Page count and file size preview for each input file',
+      'Fast client-side binary assembly with zero server latency'
     ],
     howToUse: [
-      'Upload two or more PDF documents.',
-      'Drag cards to set the desired page order.',
-      'Click "Merge PDFs" and download the merged document.'
+      'Upload two or more PDF documents using the file picker or drag-and-drop.',
+      'Reorder items using the Move Up / Move Down buttons to set the final sequence.',
+      'Click "Merge PDFs Now" and download your combined document.'
     ],
     faqs: [
       {
-        question: 'Is there a page limit for merging?',
-        answer: 'The merger handles hundreds of pages depending on your device RAM, running entirely client-side without arbitrary paywalls.'
+        question: 'Is there a limit to how many PDFs I can merge?',
+        answer: 'The merger handles dozens of documents and hundreds of pages depending on your device RAM, running entirely client-side without paywalls.'
+      },
+      {
+        question: 'Does merging alter my original files?',
+        answer: 'No. Original files on your computer are untouched. A brand new combined document is synthesized in your browser.'
       }
     ],
-    relatedToolIds: ['pdf-compressor', 'pdf-splitter'],
-    statusNote: 'Catalog Architecture Preview'
+    relatedToolIds: ['pdf-compressor', 'pdf-splitter']
   },
   {
     id: 'pdf-splitter',
@@ -459,27 +534,31 @@ export const TOOLS: ToolItem[] = [
     categoryName: 'PDF Tools',
     description: 'Extract specific pages or page ranges from large PDF documents into separate individual PDF files.',
     iconName: 'Scissors',
-    isImplemented: false,
-    popular: false,
-    tags: ['pdf', 'split', 'extract pages', 'separate', 'document pages'],
+    isImplemented: true,
+    popular: true,
+    tags: ['pdf', 'split', 'extract pages', 'separate', 'document pages', 'cut pdf'],
     features: [
-      'Visual page range selector (e.g., 1-5, 8, 11-14)',
-      'Extract single pages or split into individual single-page documents',
-      'Fast client-side processing'
+      'Three versatile split modes: Custom Page Ranges, Split Every N Pages, or All Individual Pages',
+      'Input validation for page ranges (e.g., 1, 3, 5-8)',
+      'Batch download options for all generated PDF documents',
+      'Fast client-side processing without uploading files to any server'
     ],
     howToUse: [
       'Upload your PDF file.',
-      'Specify the pages or ranges you wish to extract.',
-      'Download the extracted PDF bundle.'
+      'Choose whether to extract specific page ranges, split every N pages, or extract all single pages.',
+      'Click "Split PDF Now" and download individual files or the whole batch.'
     ],
     faqs: [
       {
         question: 'How do I specify multiple page ranges?',
         answer: 'Use commas and hyphens, for example: "1-3, 5, 7-10".'
+      },
+      {
+        question: 'Can I extract a single page from a 100-page PDF?',
+        answer: 'Yes, simply enter the target page number (e.g., "42") and click Split.'
       }
     ],
-    relatedToolIds: ['pdf-merger', 'pdf-compressor'],
-    statusNote: 'Catalog Architecture Preview'
+    relatedToolIds: ['pdf-merger', 'pdf-compressor']
   },
 
   // --- Other Utility Tools ---
@@ -652,93 +731,438 @@ export const TOOLS: ToolItem[] = [
     ],
     relatedToolIds: ['url-encoder', 'json-formatter', 'password-generator']
   },
+  {
+    id: 'slug-generator',
+    name: 'URL Slug Generator',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Convert article titles and headlines into search-engine-friendly, clean URL slugs with customizable separators and Unicode support.',
+    iconName: 'Link',
+    isImplemented: true,
+    popular: true,
+    tags: ['slug', 'url', 'permalink', 'seo', 'generator', 'hyphenate', 'clean url', 'article title'],
+    features: [
+      'Transforms spaces and punctuation into clean URL-safe delimiters',
+      'Configurable separator: Hyphen (-) or Underscore (_)',
+      'Automatic lowercase normalization and duplicate hyphen collapsing',
+      'Support for ASCII transliteration or preserving international Unicode characters',
+      'Live URL preview and one-click copy'
+    ],
+    howToUse: [
+      'Type or paste your post title or headline.',
+      'Choose your preferred separator and casing options.',
+      'Copy the generated slug directly into your CMS or codebase.'
+    ],
+    faqs: [
+      {
+        question: 'Why are URL slugs important for SEO?',
+        answer: 'Clean, descriptive slugs help search engines understand page topics and improve click-through rates by being easily readable by humans.'
+      }
+    ],
+    relatedToolIds: ['url-encoder', 'text-cleaner', 'word-counter']
+  },
+  {
+    id: 'color-converter',
+    name: 'Color Converter (HEX · RGB · HSL)',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Convert colors interchangeably between HEX, RGB, and HSL formats with real-time visual preview swatch and palette presets.',
+    iconName: 'Palette',
+    isImplemented: true,
+    popular: true,
+    tags: ['color', 'converter', 'hex', 'rgb', 'hsl', 'css', 'color picker', 'palette', 'web design'],
+    features: [
+      'Bidirectional conversion between HEX, RGB, and HSL color models',
+      'Interactive color swatch preview with click-to-pick native color wheel',
+      'Random color generator for inspiration',
+      'Pre-configured palette of popular web design colors',
+      'One-click copying for individual HEX, RGB, and HSL values'
+    ],
+    howToUse: [
+      'Enter a color in HEX (e.g. #4f46e5), RGB (e.g. rgb(79, 70, 229)), or HSL format.',
+      'Watch all counterpart color codes update instantly.',
+      'Click "Copy" next to any format to copy the code to your clipboard.'
+    ],
+    faqs: [
+      {
+        question: 'Does this support 3-digit shorthand HEX codes?',
+        answer: 'Yes. Shorthand codes like #fff are automatically expanded to #ffffff.'
+      }
+    ],
+    relatedToolIds: ['qr-code-generator', 'image-resizer', 'json-formatter']
+  },
+  {
+    id: 'uuid-generator',
+    name: 'UUID v4 Generator',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Generate cryptographically secure Version 4 UUIDs (Universally Unique Identifiers) in bulk directly in your browser.',
+    iconName: 'Key',
+    isImplemented: true,
+    popular: true,
+    tags: ['uuid', 'guid', 'v4', 'random', 'generator', 'unique id', 'developer', 'database key'],
+    features: [
+      'Powered by standard crypto.randomUUID and Web Cryptography API',
+      'Bulk generation options: 1, 5, 10, 25, or 50 UUIDs at a time',
+      'Customizable casing (lowercase or uppercase)',
+      'Format toggle: standard hyphens (8-4-4-4-12) or raw 32-character string',
+      'Copy individual UUIDs or download the full batch as a text file'
+    ],
+    howToUse: [
+      'Select the number of UUIDs you want to generate.',
+      'Adjust casing or hyphen preferences.',
+      'Click "Copy All" or download the text file.'
+    ],
+    faqs: [
+      {
+        question: 'Can two generated UUIDs ever collide?',
+        answer: 'The probability of a collision in UUID v4 is approximately 1 in 2^122, making accidental duplication mathematically negligible.'
+      }
+    ],
+    relatedToolIds: ['hash-generator', 'password-generator', 'base64-converter']
+  },
+  {
+    id: 'hash-generator',
+    name: 'Cryptographic Hash Generator',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Calculate cryptographic digests using SHA-256, SHA-512, SHA-384, and SHA-1 in your browser using the Web Crypto API.',
+    iconName: 'Fingerprint',
+    isImplemented: true,
+    popular: true,
+    tags: ['hash', 'sha256', 'sha512', 'sha384', 'sha1', 'crypto', 'digest', 'checksum', 'security'],
+    features: [
+      'Full client-side computation using the native Web Cryptography API (crypto.subtle)',
+      'Simultaneous calculation of SHA-256, SHA-512, SHA-384, and SHA-1',
+      'Full UTF-8 support for accented characters and international scripts',
+      'Uppercase or lowercase hexadecimal output toggle',
+      'Zero latency and zero transmission of plaintext data'
+    ],
+    howToUse: [
+      'Type or paste the text you want to hash into the input area.',
+      'Review the generated cryptographic hashes updating in real time.',
+      'Click "Copy" next to your desired hash algorithm.'
+    ],
+    faqs: [
+      {
+        question: 'Can a hash be decrypted back into original text?',
+        answer: 'No. Cryptographic hashes are one-way mathematical functions and cannot be reversed or decrypted.'
+      }
+    ],
+    relatedToolIds: ['uuid-generator', 'password-generator', 'base64-converter']
+  },
+  {
+    id: 'timestamp-converter',
+    name: 'Unix Timestamp Converter',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Convert Unix epoch timestamps to human-readable UTC and local date formats, or convert dates back into epoch seconds and milliseconds.',
+    iconName: 'Clock',
+    isImplemented: true,
+    popular: true,
+    tags: ['timestamp', 'unix', 'epoch', 'date', 'time', 'converter', 'seconds', 'milliseconds', 'utc', 'local time'],
+    features: [
+      'Bidirectional conversion: Timestamp to Date, and Date to Timestamp',
+      'Automatic detection of seconds (10 digits) vs milliseconds (13 digits)',
+      'Displays full Local Browser Time (using your browser’s own timezone) and UTC',
+      'Outputs ISO 8601 extended and relative time phrases (e.g. 2 hours ago)',
+      'One-click "Use Current Timestamp" button'
+    ],
+    howToUse: [
+      'To convert a timestamp: enter the numeric epoch value to view date equivalents.',
+      'To convert a date: pick your date & time to calculate the exact epoch seconds and milliseconds.',
+      'Copy any converted result with a single click.'
+    ],
+    faqs: [
+      {
+        question: 'What is a Unix epoch timestamp?',
+        answer: 'A Unix timestamp is the total number of seconds elapsed since 00:00:00 UTC on January 1, 1970, not counting leap seconds.'
+      }
+    ],
+    relatedToolIds: ['age-calculator', 'unit-converter', 'json-formatter']
+  },
+  {
+    id: 'markdown-preview',
+    name: 'Markdown Previewer',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Live in-browser Markdown editor with instant sanitized HTML preview, task lists, code blocks, tables, and export options.',
+    iconName: 'Code2',
+    isImplemented: true,
+    popular: true,
+    tags: ['markdown', 'preview', 'editor', 'md', 'html', 'live preview', 'github markdown', 'render markdown'],
+    features: [
+      'Real-time live preview rendering as you type',
+      'Supports headings, lists, blockquotes, code blocks, tables, and task checkboxes',
+      'Rigorous XSS sanitization that neutralizes raw script and frame tags',
+      'Flexible layout options: Split View, Editor Only, or Preview Only',
+      'Download .md files or copy sanitized HTML with one click'
+    ],
+    howToUse: [
+      'Write or paste Markdown into the left editor pane.',
+      'Observe the live rendered HTML preview on the right.',
+      'Copy the Markdown, copy the sanitized HTML, or download as a .md file.'
+    ],
+    faqs: [
+      {
+        question: 'Is my Markdown sanitized against script attacks?',
+        answer: 'Yes! All raw HTML characters are escaped before parsing to ensure zero risk of cross-site scripting (XSS).'
+      }
+    ],
+    relatedToolIds: ['word-counter', 'character-counter', 'json-formatter']
+  },
 
-  // --- AI Tools (Architecture & UI Preview without fake pretend execution) ---
+  // --- Phase 6 Developer & Text Tools ---
   {
-    id: 'ai-text-summarizer',
-    name: 'AI Text Summarizer',
-    category: 'ai',
-    categoryName: 'AI Tools',
-    description: 'Condense long articles, research papers, and documents into executive bullet points and key takeaways.',
-    iconName: 'Sparkles',
-    isImplemented: false,
-    popular: false,
-    tags: ['ai', 'summarize', 'summary', 'tldr', 'executive summary', 'bullets', 'notes'],
+    id: 'regex-tester',
+    name: 'Regex Tester',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Test, validate, and debug regular expressions with live visual match highlights, capture groups, flag toggles, and pattern presets.',
+    iconName: 'Code2',
+    isImplemented: true,
+    popular: true,
+    tags: ['regex', 'regular expression', 'pattern', 'match', 'test regex', 'tester', 'flags', 'capture groups', 'developer'],
     features: [
-      'Adjustable summary depth: Bullet Points, Quick TL;DR, or Executive Brief',
-      'Tone customization: Professional, Academic, Casual',
-      'Architected for zero-cost client integration or user-provided keys'
+      'Interactive real-time match evaluation with loop guard safety',
+      'Configurable flags: Global (g), Case-Insensitive (i), Multiline (m), DotAll (s), Unicode (u)',
+      'Visual match highlighting with index positions and length statistics',
+      'Capture group inspection table for extracting specific token values',
+      'Curated regular expression presets: Email, URL, Hex color, IPv4, Date formats'
     ],
     howToUse: [
-      'Paste your source article or long-form copy.',
-      'Select preferred summary format.',
-      'Review the generated summary points once the AI connector is active.'
+      'Enter your regular expression pattern in the pattern input box.',
+      'Toggle regex flags (g, i, m, s, u) according to your match criteria.',
+      'Type or paste your target test string into the text area.',
+      'Examine the highlighted match occurrences and capture group breakdown.'
     ],
     faqs: [
       {
-        question: 'Is this AI tool currently active?',
-        answer: 'This is an architecture preview. In adherence to our $0 budget and transparency policy, AI execution is clearly marked as upcoming and will connect to free client or self-configured APIs.'
+        question: 'Does this tool execute eval() or send data to servers?',
+        answer: 'No. Patterns are safely compiled using the standard JavaScript RegExp constructor in your browser with zero server communication.'
+      },
+      {
+        question: 'How do capture groups work?',
+        answer: 'Parentheses () in your regex pattern define capture groups, which appear in the detailed match table below the preview.'
       }
     ],
-    relatedToolIds: ['ai-email-writer', 'ai-caption-generator', 'word-counter'],
-    statusNote: 'Upcoming Feature · Architecture Preview (No fake simulation)'
+    relatedToolIds: ['json-diff', 'text-diff', 'url-encoder']
   },
   {
-    id: 'ai-email-writer',
-    name: 'AI Email Writer',
-    category: 'ai',
-    categoryName: 'AI Tools',
-    description: 'Draft professional emails, follow-ups, outreach messages, and polite replies based on simple prompt outlines.',
-    iconName: 'Mail',
-    isImplemented: false,
-    popular: false,
-    tags: ['ai', 'email', 'writer', 'draft', 'outreach', 'follow up', 'business'],
+    id: 'json-diff',
+    name: 'JSON Diff & Compare',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Compare two JSON objects or arrays structurally to pinpoint added, removed, and modified values with visual highlighting.',
+    iconName: 'GitCompare',
+    isImplemented: true,
+    popular: true,
+    tags: ['json', 'diff', 'compare', 'compare json', 'json diff', 'structural comparison', 'json compare', 'developer'],
     features: [
-      'Tone selection: Formal, Direct, Friendly, Persuasive',
-      'Subject line generator with multiple variants',
-      'Draft refinement controls'
+      'Deep structural comparison of nested JSON objects and arrays',
+      'Categorized change breakdown: Added (+), Removed (-), and Modified (~)',
+      'Syntax validation with precise line error notifications for invalid JSON',
+      'One-click JSON formatting, Swap A/B, and filter only differences',
+      'Exportable unified text diff summary for pull requests and documentation'
     ],
     howToUse: [
-      'Describe the recipient and the main goal of your email.',
-      'Select the appropriate tone.',
-      'Generate and customize your draft.'
+      'Paste your baseline JSON document into the JSON A editor.',
+      'Paste your revised JSON document into the JSON B editor.',
+      'Review the categorized structural diff entries and summary metrics.',
+      'Use the filter toggle to view all keys or exclusively modified values.'
     ],
     faqs: [
       {
-        question: 'When will this feature be available?',
-        answer: 'The user interface and state structure are built in this version. The model integration will be activated in an upcoming release.'
+        question: 'Does this compare raw strings or parsed data structures?',
+        answer: 'It parses both JSON documents into abstract syntax trees and compares keys and values hierarchically, ignoring arbitrary key order or whitespace.'
       }
     ],
-    relatedToolIds: ['ai-text-summarizer', 'ai-caption-generator'],
-    statusNote: 'Upcoming Feature · Architecture Preview (No fake simulation)'
+    relatedToolIds: ['json-formatter', 'text-diff', 'regex-tester']
   },
   {
-    id: 'ai-caption-generator',
-    name: 'AI Caption Generator',
-    category: 'ai',
-    categoryName: 'AI Tools',
-    description: 'Generate engaging social media captions, hashtags, and hooks tailored for Instagram, LinkedIn, and X.',
-    iconName: 'MessageSquare',
-    isImplemented: false,
-    popular: false,
-    tags: ['ai', 'caption', 'social media', 'instagram', 'linkedin', 'hashtags', 'hook'],
+    id: 'text-diff',
+    name: 'Text Diff Checker',
+    category: 'text',
+    categoryName: 'Text Tools',
+    description: 'Compare two text passages side-by-side or line-by-line to reveal added, deleted, and altered lines using an LCS diff engine.',
+    iconName: 'ArrowRightLeft',
+    isImplemented: true,
+    popular: true,
+    tags: ['text diff', 'compare text', 'diff checker', 'line comparison', 'file diff', 'text compare', 'lcs'],
     features: [
-      'Platform tailored lengths and formatting',
-      'Trending hashtag suggestion cluster',
-      'Hook style variations (Question, Story, Punchy)'
+      'High-performance Longest Common Subsequence (LCS) line diff algorithm',
+      'Side-by-side editing panes with line-numbered synchronized views',
+      'Optional whitespace ignore toggle for focusing on semantic changes',
+      'Detailed comparison metrics: Added lines, Removed lines, Unchanged lines',
+      'One-click unified diff export compatible with Git and patch utilities'
     ],
     howToUse: [
-      'Enter the topic, product, or theme of your post.',
-      'Select your target social platform.',
-      'Review generated hooks and captions.'
+      'Paste your original text into Text A.',
+      'Paste your updated text into Text B.',
+      'View the highlighted line differences in the Unified Diff result pane.',
+      'Copy the unified diff or swap text sides with one click.'
     ],
     faqs: [
       {
-        question: 'Will it support custom tone of voice?',
-        answer: 'Yes, future updates will include brand voice customization profiles.'
+        question: 'Are large text files supported?',
+        answer: 'Yes, typical document comparisons (hundreds of lines) execute instantaneously in your browser memory.'
       }
     ],
-    relatedToolIds: ['ai-text-summarizer', 'ai-email-writer', 'character-counter'],
-    statusNote: 'Upcoming Feature · Architecture Preview (No fake simulation)'
+    relatedToolIds: ['text-cleaner', 'word-counter', 'json-diff']
+  },
+  {
+    id: 'jwt-decoder',
+    name: 'JWT Decoder',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Decode and inspect JSON Web Tokens (JWT) payload claims, algorithm headers, and expiration timestamps securely in your browser.',
+    iconName: 'KeyRound',
+    isImplemented: true,
+    popular: true,
+    tags: ['jwt', 'token', 'decode jwt', 'jwt decoder', 'bearer token', 'json web token', 'claims', 'auth', 'expiration'],
+    features: [
+      'Base64URL decoding with full UTF-8 character encoding support',
+      'Formatted color-coded JSON inspector for Header, Payload, and Signature',
+      'Automatic expiration analysis: Active vs Expired status and human-readable dates',
+      'Zero-transmission privacy: tokens are never transmitted to any network server',
+      'One-click copying for decoded claims and payloads'
+    ],
+    howToUse: [
+      'Paste an encoded JSON Web Token into the input field.',
+      'Inspect the decoded Header properties and Payload claims.',
+      'Check the expiration badge to confirm token validity.',
+      'Copy formatted JSON claims for debugging API requests.'
+    ],
+    faqs: [
+      {
+        question: 'Does this tool verify token signatures?',
+        answer: 'No. This is a client-side payload decoder. Signature verification requires server-side public or private keys.'
+      }
+    ],
+    relatedToolIds: ['base64-converter', 'hash-generator', 'timestamp-converter']
+  },
+  {
+    id: 'html-encoder',
+    name: 'HTML Entity Encoder / Decoder',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Convert special characters to safe HTML entities or decode entities back to plain text to prevent XSS vulnerabilities.',
+    iconName: 'Code',
+    isImplemented: true,
+    popular: true,
+    tags: ['html', 'entities', 'encode html', 'decode html', 'xss', 'html entities', 'escape html', 'unescape', 'web'],
+    features: [
+      'Bidirectional conversion: Raw Text to HTML Entities and Entities to Text',
+      'Three encoding scopes: Basic (<, >, &, \", \'), Extended Named, and Numeric Decimal',
+      'Decodes all standard named entities (e.g. &copy;, &euro;, &trade;) and numeric entities',
+      'Side-by-side editing with character and line count analytics',
+      'Essential HTML entities quick reference cheat-sheet included'
+    ],
+    howToUse: [
+      'Select Encode or Decode mode using the toggle button.',
+      'Enter or paste text into the input textarea.',
+      'Choose your preferred entity encoding scope (Basic, Extended, or Decimal).',
+      'Copy or download the safe encoded HTML entities output.'
+    ],
+    faqs: [
+      {
+        question: 'Why should I encode HTML entities?',
+        answer: 'Encoding reserved characters like < and & prevents browsers from interpreting user input as live markup, defending against cross-site scripting (XSS).'
+      }
+    ],
+    relatedToolIds: ['url-encoder', 'base64-converter', 'markdown-preview']
+  },
+  {
+    id: 'css-formatter',
+    name: 'CSS Formatter & Minifier',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Beautify unformatted CSS stylesheets or minify CSS to reduce file size and accelerate web performance.',
+    iconName: 'FileCode',
+    isImplemented: true,
+    popular: true,
+    tags: ['css', 'formatter', 'minify css', 'beautify css', 'css minifier', 'stylesheet', 'compress css', 'clean css'],
+    features: [
+      'Dual mode engine: Format/Beautify for readability or Minify for production deployment',
+      'Custom indentation controls: 2 spaces, 4 spaces, or Tab characters',
+      'Supports CSS variables, complex selectors, media queries, and keyframe animations',
+      'Instant size reduction metrics and bandwidth savings calculation',
+      'Syntax integrity checker for matching curly brace pairs'
+    ],
+    howToUse: [
+      'Paste your CSS stylesheet into the input editor.',
+      'Choose "Format / Beautify" or "Minify / Compress".',
+      'Adjust indentation preferences if beautifying.',
+      'Copy the optimized CSS or download as a .css file.'
+    ],
+    faqs: [
+      {
+        question: 'How much bandwidth can CSS minification save?',
+        answer: 'Minification typically reduces CSS file sizes by 20% to 50% by stripping whitespace and comments.'
+      }
+    ],
+    relatedToolIds: ['json-formatter', 'html-encoder', 'color-converter']
+  },
+  {
+    id: 'sql-formatter',
+    name: 'SQL Formatter & Beautifier',
+    category: 'dev',
+    categoryName: 'Developer Tools',
+    description: 'Format, indent, and prettify messy SQL database queries with uppercase keywords, clause line breaks, and subquery alignment.',
+    iconName: 'Database',
+    isImplemented: true,
+    popular: true,
+    tags: ['sql', 'formatter', 'sql beautifier', 'format sql', 'database', 'query', 'mysql', 'postgres', 'sqlite', 'indent sql'],
+    features: [
+      'Universal SQL dialect formatting: PostgreSQL, MySQL, SQLite, Oracle, and SQL Server',
+      'Configurable keyword casing: UPPERCASE, lowercase, or preserve original casing',
+      'Major clause separation: SELECT, FROM, WHERE, JOINs, GROUP BY, ORDER BY, and HAVING',
+      'Minify mode for packaging clean single-line queries into application code',
+      'Preserves string literals and quoted identifier strings intact'
+    ],
+    howToUse: [
+      'Paste your unformatted SQL query into the left editor.',
+      'Select formatting preferences (UPPERCASE keywords, indentation spacing).',
+      'View the neatly indented and organized SQL query.',
+      'Copy formatted query or download as a .sql script file.'
+    ],
+    faqs: [
+      {
+        question: 'Does this tool connect to any database server?',
+        answer: 'No. SQL formatting happens 100% locally in your web browser. No queries or credentials leave your computer.'
+      }
+    ],
+    relatedToolIds: ['json-formatter', 'regex-tester', 'text-diff']
+  },
+  {
+    id: 'lorem-ipsum',
+    name: 'Lorem Ipsum Generator',
+    category: 'text',
+    categoryName: 'Text Tools',
+    description: 'Generate realistic dummy placeholder copy by paragraphs, sentences, words, or lists in plain text, HTML, or Markdown.',
+    iconName: 'AlignLeft',
+    isImplemented: true,
+    popular: true,
+    tags: ['lorem ipsum', 'dummy text', 'placeholder text', 'generator', 'lipsum', 'text generator', 'mockup copy', 'typography'],
+    features: [
+      'Generate by Paragraphs, Sentences, Individual Words, or Bulleted Lists',
+      'Custom quantity selector from 1 to 50 items',
+      'Optional classic opener: "Lorem ipsum dolor sit amet..."',
+      'Multi-format export: Plain Text, HTML (<p> and <ul>), or Markdown',
+      'Word, character, and paragraph count statistics with one-click regeneration'
+    ],
+    howToUse: [
+      'Select the generation unit (Paragraphs, Sentences, Words, or List).',
+      'Choose the desired quantity using the quick buttons or number input.',
+      'Select output formatting (Plain Text, HTML, or Markdown).',
+      'Copy the generated copy or download as a .txt or .html file.'
+    ],
+    faqs: [
+      {
+        question: 'What is Lorem Ipsum?',
+        answer: 'Lorem Ipsum has been the industry standard dummy text since the 1500s, derived from Cicero\'s classical Latin literature.'
+      }
+    ],
+    relatedToolIds: ['word-counter', 'character-counter', 'case-converter']
   }
 ];

@@ -92,7 +92,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
         {!query && (
           <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center gap-2 overflow-x-auto text-xs text-slate-600">
             <span className="text-slate-400 shrink-0">Popular:</span>
-            {['QR Code', 'Word Counter', 'Password', 'Barcode', 'JSON', 'Units', 'Base64', 'Age', 'Compress', 'Resize'].map((term) => (
+            {['QR Code', 'Word Counter', 'Password', 'Barcode', 'PDF Merge', 'Regex', 'JSON Diff', 'JWT', 'SQL', 'CSS', 'Lorem', 'UUID', 'Hash', 'Color', 'Markdown', 'Timestamp'].map((term) => (
               <button
                 key={term}
                 onClick={() => setQuery(term)}

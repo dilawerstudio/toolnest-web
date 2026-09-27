@@ -37,6 +37,31 @@ import { ImageResizer } from './components/tools/ImageResizer';
 import { PngToJpg } from './components/tools/PngToJpg';
 import { JpgToPng } from './components/tools/JpgToPng';
 
+// Phase 4 Working PDF Tools
+import { PdfCompressor } from './components/tools/PdfCompressor';
+import { PdfMerger } from './components/tools/PdfMerger';
+import { PdfSplitter } from './components/tools/PdfSplitter';
+
+// Phase 5 Working Tools
+import { TextCleaner } from './components/tools/TextCleaner';
+import { TextReverser } from './components/tools/TextReverser';
+import { SlugGenerator } from './components/tools/SlugGenerator';
+import { ColorConverter } from './components/tools/ColorConverter';
+import { UuidGenerator } from './components/tools/UuidGenerator';
+import { HashGenerator } from './components/tools/HashGenerator';
+import { TimestampConverter } from './components/tools/TimestampConverter';
+import { MarkdownPreview } from './components/tools/MarkdownPreview';
+
+// Phase 6 Working Tools
+import { RegexTester } from './components/tools/RegexTester';
+import { JsonDiff } from './components/tools/JsonDiff';
+import { TextDiff } from './components/tools/TextDiff';
+import { JwtDecoder } from './components/tools/JwtDecoder';
+import { HtmlEncoder } from './components/tools/HtmlEncoder';
+import { CssFormatter } from './components/tools/CssFormatter';
+import { SqlFormatter } from './components/tools/SqlFormatter';
+import { LoremIpsum } from './components/tools/LoremIpsum';
+
 // Architecture Preview for other tools
 import { ToolPreviewPage } from './components/tools/ToolPreviewPage';
 
@@ -129,6 +154,44 @@ export default function App() {
             return <PngToJpg tool={tool} onToast={showToast} />;
           case 'jpg-to-png':
             return <JpgToPng tool={tool} onToast={showToast} />;
+          case 'pdf-compressor':
+            return <PdfCompressor tool={tool} onToast={showToast} />;
+          case 'pdf-merger':
+            return <PdfMerger tool={tool} onToast={showToast} />;
+          case 'pdf-splitter':
+            return <PdfSplitter tool={tool} onToast={showToast} />;
+          case 'text-cleaner':
+            return <TextCleaner tool={tool} onToast={showToast} />;
+          case 'text-reverser':
+            return <TextReverser tool={tool} onToast={showToast} />;
+          case 'slug-generator':
+            return <SlugGenerator tool={tool} onToast={showToast} />;
+          case 'color-converter':
+            return <ColorConverter tool={tool} onToast={showToast} />;
+          case 'uuid-generator':
+            return <UuidGenerator tool={tool} onToast={showToast} />;
+          case 'hash-generator':
+            return <HashGenerator tool={tool} onToast={showToast} />;
+          case 'timestamp-converter':
+            return <TimestampConverter tool={tool} onToast={showToast} />;
+          case 'markdown-preview':
+            return <MarkdownPreview tool={tool} onToast={showToast} />;
+          case 'regex-tester':
+            return <RegexTester tool={tool} onToast={showToast} />;
+          case 'json-diff':
+            return <JsonDiff tool={tool} onToast={showToast} />;
+          case 'text-diff':
+            return <TextDiff tool={tool} onToast={showToast} />;
+          case 'jwt-decoder':
+            return <JwtDecoder tool={tool} onToast={showToast} />;
+          case 'html-encoder':
+            return <HtmlEncoder tool={tool} onToast={showToast} />;
+          case 'css-formatter':
+            return <CssFormatter tool={tool} onToast={showToast} />;
+          case 'sql-formatter':
+            return <SqlFormatter tool={tool} onToast={showToast} />;
+          case 'lorem-ipsum':
+            return <LoremIpsum tool={tool} onToast={showToast} />;
           default:
             return <ToolPreviewPage tool={tool} onToast={showToast} />;
         }

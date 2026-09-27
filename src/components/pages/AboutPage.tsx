@@ -47,13 +47,20 @@ export const AboutPage: React.FC = () => {
         <section className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200">
           <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
             <Code2 className="w-5 h-5 text-violet-600" />
-            <span>Roadmap & Ongoing Development</span>
+            <span>Comprehensive 35-Tool Privacy Suite</span>
           </h2>
           <p className="mb-3">
-            In our initial phase, we have brought 7 core working utilities to full maturity: Word Counter, Character Counter, Case Converter, Age Calculator, Percentage Calculator, Password Generator, and QR Code Generator.
+            ToolNest now offers 35 production-ready, client-side browser utilities spanning five essential categories:
           </p>
+          <ul className="list-disc pl-5 mb-3 space-y-1 text-xs text-slate-600">
+            <li><strong>Text Tools (5):</strong> Word Counter, Character Counter, Case Converter, Text Cleaner, and Text Reverser.</li>
+            <li><strong>Utility & Calculators (5):</strong> Age Calculator, Percentage Calculator, Strong Password Generator, QR Code Generator, and Unit Converter.</li>
+            <li><strong>Developer Tools (18):</strong> JSON Formatter, JSON Diff, Text Diff, Regex Tester, JWT Decoder, HTML Entity Encoder, CSS Minifier/Formatter, SQL Formatter, Lorem Ipsum Generator, UUID v4 Generator, Hash Generator, Base64 Converter, URL Encoder, Barcode Generator, Slug Generator, Color Converter, Timestamp Converter, and Markdown Previewer.</li>
+            <li><strong>Image Optimization (4):</strong> Image Compressor, Image Resizer, PNG to JPG, and JPG to PNG converters.</li>
+            <li><strong>PDF Document Tools (3):</strong> PDF Compressor, PDF Merger, and PDF Splitter.</li>
+          </ul>
           <p>
-            Our catalog architecture outlines the next wave of client-side image compressors, PDF processors, developer tools, and zero-cost AI integrations. We listen closely to community feedback to prioritize tools that bring the highest daily utility.
+            Every single utility executes purely inside your device's browser sandbox—ensuring zero data transmission, zero server logs, zero subscription paywalls, and maximum computing speed.
           </p>
         </section>
       </div>

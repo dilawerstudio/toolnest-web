@@ -12,6 +12,12 @@ export const AllToolsPage: React.FC<AllToolsPageProps> = ({ initialCategory }) =
   const [selectedCat, setSelectedCat] = useState<string>(initialCategory || 'all');
   const [searchQuery, setSearchQuery] = useState('');
 
+  React.useEffect(() => {
+    if (initialCategory) {
+      setSelectedCat(initialCategory);
+    }
+  }, [initialCategory]);
+
   const filteredTools = useMemo(() => {
     return TOOLS.filter((tool) => {
       const matchesCategory = selectedCat === 'all' || tool.category === selectedCat;

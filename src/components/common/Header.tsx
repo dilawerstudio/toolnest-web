@@ -92,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, currentPath }) => 
             className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 rounded-lg mb-3"
           >
             <Search className="w-4 h-4 text-slate-500" />
-            <span>Search all 20+ utilities...</span>
+            <span>Search all 35 utilities...</span>
           </button>
 
           {navLinks.map((link) => (

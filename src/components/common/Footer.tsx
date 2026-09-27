@@ -71,18 +71,25 @@ export const Footer: React.FC = () => {
               <li><a href="#/tools/barcode-generator" className="hover:text-indigo-600 transition-colors">Barcode Generator</a></li>
               <li><a href="#/tools/image-compressor" className="hover:text-indigo-600 transition-colors">Image Compressor</a></li>
               <li><a href="#/tools/image-resizer" className="hover:text-indigo-600 transition-colors">Image Resizer</a></li>
+              <li><a href="#/tools/pdf-compressor" className="hover:text-indigo-600 transition-colors">PDF Compressor</a></li>
+              <li><a href="#/tools/pdf-merger" className="hover:text-indigo-600 transition-colors">PDF Merger</a></li>
+              <li><a href="#/tools/uuid-generator" className="hover:text-indigo-600 transition-colors">UUID Generator</a></li>
+              <li><a href="#/tools/regex-tester" className="hover:text-indigo-600 transition-colors">Regex Tester</a></li>
+              <li><a href="#/tools/json-diff" className="hover:text-indigo-600 transition-colors">JSON Diff</a></li>
+              <li><a href="#/tools/text-diff" className="hover:text-indigo-600 transition-colors">Text Diff</a></li>
+              <li><a href="#/tools/jwt-decoder" className="hover:text-indigo-600 transition-colors">JWT Decoder</a></li>
+              <li><a href="#/tools/sql-formatter" className="hover:text-indigo-600 transition-colors">SQL Formatter</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-slate-900 text-xs uppercase tracking-wider mb-3">Categories</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#/tools?category=text" className="hover:text-indigo-600 transition-colors">Text Tools</a></li>
-              <li><a href="#/tools?category=utility" className="hover:text-indigo-600 transition-colors">Utility & Math</a></li>
-              <li><a href="#/tools?category=dev" className="hover:text-indigo-600 transition-colors">Developer Tools</a></li>
-              <li><a href="#/tools?category=image" className="hover:text-indigo-600 transition-colors">Image Tools</a></li>
-              <li><a href="#/tools?category=pdf" className="hover:text-indigo-600 transition-colors">PDF Tools</a></li>
-              <li><a href="#/tools?category=ai" className="hover:text-indigo-600 transition-colors">AI Tools Preview</a></li>
+              <li><a href="#/tools?category=text" className="hover:text-indigo-600 transition-colors">Text Tools (5)</a></li>
+              <li><a href="#/tools?category=utility" className="hover:text-indigo-600 transition-colors">Utility & Calculators (5)</a></li>
+              <li><a href="#/tools?category=dev" className="hover:text-indigo-600 transition-colors">Developer Tools (18)</a></li>
+              <li><a href="#/tools?category=image" className="hover:text-indigo-600 transition-colors">Image Tools (4)</a></li>
+              <li><a href="#/tools?category=pdf" className="hover:text-indigo-600 transition-colors">PDF Tools (3)</a></li>
             </ul>
           </div>
 

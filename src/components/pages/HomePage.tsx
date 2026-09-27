@@ -13,15 +13,22 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCategory }) => {
-  const [inlineSearch, setInlineSearch] = useState('');
+  // Curated 6 popular tools across different categories for the Featured section
+  const featuredToolIds = [
+    'word-counter',
+    'qr-code-generator',
+    'password-generator',
+    'image-compressor',
+    'pdf-merger',
+    'json-formatter'
+  ];
+  const featuredTools = TOOLS.filter((t) => featuredToolIds.includes(t.id));
 
-  const workingPopularTools = TOOLS.filter((t) => t.isImplemented && t.popular);
   const textTools = TOOLS.filter((t) => t.category === 'text');
   const utilityTools = TOOLS.filter((t) => t.category === 'utility');
   const devTools = TOOLS.filter((t) => t.category === 'dev');
   const imageTools = TOOLS.filter((t) => t.category === 'image');
   const pdfTools = TOOLS.filter((t) => t.category === 'pdf');
-  const aiTools = TOOLS.filter((t) => t.category === 'ai');
 
   const faqs = [
     {
@@ -97,9 +104,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
               <span>·</span>
               <a href="#/tools/json-formatter" className="hover:text-indigo-600 transition-colors">JSON Formatter</a>
               <span>·</span>
-              <a href="#/tools/unit-converter" className="hover:text-indigo-600 transition-colors">Unit Converter</a>
+              <a href="#/tools/regex-tester" className="hover:text-indigo-600 transition-colors">Regex Tester</a>
+              <span>·</span>
+              <a href="#/tools/json-diff" className="hover:text-indigo-600 transition-colors">JSON Diff</a>
+              <span>·</span>
+              <a href="#/tools/jwt-decoder" className="hover:text-indigo-600 transition-colors">JWT Decoder</a>
+              <span>·</span>
+              <a href="#/tools/sql-formatter" className="hover:text-indigo-600 transition-colors">SQL Formatter</a>
               <span>·</span>
               <a href="#/tools/image-compressor" className="hover:text-indigo-600 transition-colors">Image Compressor</a>
+              <span>·</span>
+              <a href="#/tools/pdf-merger" className="hover:text-indigo-600 transition-colors">PDF Merger</a>
+              <span>·</span>
+              <a href="#/tools/unit-converter" className="hover:text-indigo-600 transition-colors">Unit Converter</a>
+              <span>·</span>
+              <a href="#/tools/uuid-generator" className="hover:text-indigo-600 transition-colors">UUID Generator</a>
             </div>
           </div>
         </div>
@@ -116,7 +135,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200">
             <div>
               <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-1">
-                Ready to Use Now
+                Featured Utilities
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
                 Popular Working Tools
@@ -126,13 +145,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
               href="#/tools"
               className="mt-2 sm:mt-0 inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800"
             >
-              <span>View All 20+ Utilities</span>
+              <span>View All 35 Utilities</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {workingPopularTools.map((tool) => (
+            {featuredTools.map((tool) => (
               <ToolCard key={tool.id} tool={tool} />
             ))}
           </div>
@@ -148,10 +167,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Text Tools</h2>
             </div>
             <a href="#/tools?category=text" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-              Browse Text Tools →
+              Browse All 5 Text Tools →
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {textTools.map((tool) => (
               <ToolCard key={tool.id} tool={tool} />
             ))}
@@ -164,11 +183,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <span className="text-xs text-slate-500 font-medium">Everyday Math & Security</span>
+              <span className="text-xs text-slate-500 font-medium">Everyday Math, Codes & Security</span>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Utility Tools & Calculators</h2>
             </div>
             <a href="#/tools?category=utility" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-              Browse All Calculators →
+              Browse All 5 Calculators →
             </a>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -184,17 +203,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <span className="text-xs text-slate-500 font-medium">Formatting, Encoders & Decoders</span>
+              <span className="text-xs text-slate-500 font-medium">Formatting, Diff, Encoders & Testing</span>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Developer Tools</h2>
             </div>
             <a href="#/tools?category=dev" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-              Browse Dev Tools →
+              Browse All 18 Dev Tools →
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {devTools.map((tool) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {devTools.slice(0, 6).map((tool) => (
               <ToolCard key={tool.id} tool={tool} />
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a
+              href="#/tools?category=dev"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 hover:border-indigo-300 shadow-xs transition-all"
+            >
+              <span>Explore All 18 Developer Utilities (Regex, JSON Diff, JWT, SQL & More)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </section>
@@ -211,11 +239,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
                   <h3 className="text-xl font-bold text-slate-900">Image Tools</h3>
                 </div>
                 <a href="#/tools?category=image" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-                  View All →
+                  View All (4) →
                 </a>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {imageTools.slice(0, 4).map((tool) => (
+                {imageTools.map((tool) => (
                   <ToolCard key={tool.id} tool={tool} />
                 ))}
               </div>
@@ -229,11 +257,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
                   <h3 className="text-xl font-bold text-slate-900">PDF Tools</h3>
                 </div>
                 <a href="#/tools?category=pdf" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-                  View All →
+                  View All (3) →
                 </a>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {pdfTools.slice(0, 4).map((tool) => (
+                {pdfTools.map((tool) => (
                   <ToolCard key={tool.id} tool={tool} />
                 ))}
               </div>
@@ -242,31 +270,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
         </div>
       </section>
 
-      {/* Section 6: AI Tools Section (Explicitly marked as architecture preview) */}
-      <section className="py-12 bg-slate-50/70 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-6 rounded-2xl bg-white border border-amber-200/80 shadow-xs mb-8">
-            <div className="flex items-start gap-3">
-              <Sparkles className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-              <div>
-                <h3 className="text-sm font-bold text-slate-900">AI Tools: Architecture & Design Preview</h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  ToolNest is committed to full transparency: we do not pretend that AI tools operate without a live model.
-                  Below is the planned architecture for our smart text tools, engineered for zero-cost client integration in our upcoming release.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {aiTools.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 7: "Why Use ToolNest?" Value Section */}
+      {/* Section 6: "Why Use ToolNest?" Value Section */}
       <section className="py-16 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">

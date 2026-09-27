@@ -1,4 +1,4 @@
-export type ToolCategory = 'text' | 'utility' | 'image' | 'pdf' | 'dev' | 'ai';
+export type ToolCategory = 'text' | 'utility' | 'image' | 'pdf' | 'dev';
 
 export interface ToolFaq {
   question: string;
