@@ -71,6 +71,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://toolnest.example.com/#/tools/image-compressor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.example.com/#/tools/image-resizer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.example.com/#/tools/png-to-jpg</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.example.com/#/tools/jpg-to-png</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://toolnest.example.com/#/about</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

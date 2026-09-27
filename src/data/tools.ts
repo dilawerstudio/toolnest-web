@@ -270,28 +270,33 @@ export const TOOLS: ToolItem[] = [
     categoryName: 'Image Tools',
     description: 'Compress JPG, PNG, and WebP images directly in your browser with adjustable quality levels to reduce file size without losing clarity.',
     iconName: 'Image',
-    isImplemented: false,
-    popular: false,
-    tags: ['image', 'compress', 'compressor', 'jpg', 'png', 'shrink', 'file size', 'optimize image'],
+    isImplemented: true,
+    popular: true,
+    tags: ['image', 'compress', 'compressor', 'jpg', 'png', 'webp', 'shrink', 'file size', 'optimize image'],
     features: [
-      'Client-side HTML5 canvas compression',
+      'Client-side HTML5 canvas compression with zero server upload',
       'Adjustable compression quality ratio (10% - 100%)',
-      'Side-by-side original vs compressed file size comparison',
-      'Zero server upload: process private photos securely on your device'
+      'Support for JPG, PNG, and modern WebP output formats',
+      'Side-by-side original vs compressed size comparison & savings percentage',
+      'Instant high-resolution download'
     ],
     howToUse: [
-      'Drag and drop or select an image file from your device.',
+      'Drag and drop or select an image file (JPG, PNG, or WebP) from your device.',
       'Adjust the quality slider to balance visual fidelity and file size.',
+      'Choose your preferred target format if desired.',
       'Download the compressed file with a single click.'
     ],
     faqs: [
       {
         question: 'How does client-side compression work?',
         answer: 'The browser decodes the image into an in-memory canvas element and re-encodes it at the specified target quality level using standard Web APIs.'
+      },
+      {
+        question: 'Are my private photos uploaded to any server?',
+        answer: 'Never. Every byte is processed strictly inside your device’s local browser memory.'
       }
     ],
-    relatedToolIds: ['image-resizer', 'jpg-to-png', 'png-to-jpg'],
-    statusNote: 'Catalog Architecture Preview · Full client-side compression engine in development'
+    relatedToolIds: ['image-resizer', 'jpg-to-png', 'png-to-jpg']
   },
   {
     id: 'image-resizer',
@@ -300,48 +305,54 @@ export const TOOLS: ToolItem[] = [
     categoryName: 'Image Tools',
     description: 'Resize image dimensions by exact pixels or percentage scale while preserving aspect ratio, perfect for web and social media.',
     iconName: 'Maximize2',
-    isImplemented: false,
-    popular: false,
-    tags: ['image', 'resize', 'dimensions', 'width', 'height', 'scale', 'aspect ratio', 'pixels'],
+    isImplemented: true,
+    popular: true,
+    tags: ['image', 'resize', 'dimensions', 'width', 'height', 'scale', 'aspect ratio', 'pixels', 'resizer'],
     features: [
-      'Custom pixel width & height resizing',
-      'Lock aspect ratio toggle to prevent distortion',
-      'Percentage scaling presets (25%, 50%, 75%)',
-      'Instant download in original or optimized format'
+      'Custom pixel width & height resizing with high-quality bicubic canvas interpolation',
+      'Lock aspect ratio toggle to prevent visual distortion',
+      'Percentage scaling presets (25%, 50%, 75%, 100%, 150%, 200%)',
+      'Multi-format export: Original, JPG, PNG, or WebP',
+      'Instant client-side download'
     ],
     howToUse: [
       'Upload the image you want to resize.',
       'Enter the target width or height, or select a preset percentage.',
+      'Toggle aspect ratio lock according to your formatting requirements.',
       'Preview the resized image and click download.'
     ],
     faqs: [
       {
         question: 'Will resizing reduce quality?',
         answer: 'Scaling down maintains crispness while reducing memory footprint. Scaling up significantly may introduce softness or pixelation.'
+      },
+      {
+        question: 'Can I resize photos for social media limits?',
+        answer: 'Yes. Enter the exact pixel dimensions required (e.g. 1080×1080 for Instagram, 1200×630 for Facebook or Twitter) to resize instantly.'
       }
     ],
-    relatedToolIds: ['image-compressor', 'jpg-to-png', 'png-to-jpg'],
-    statusNote: 'Catalog Architecture Preview · Multi-format canvas resizer in development'
+    relatedToolIds: ['image-compressor', 'jpg-to-png', 'png-to-jpg']
   },
   {
     id: 'jpg-to-png',
     name: 'JPG to PNG Converter',
     category: 'image',
     categoryName: 'Image Tools',
-    description: 'Convert JPEG/JPG images to lossless PNG format with transparent canvas capability and clean raster output.',
+    description: 'Convert JPEG/JPG images to lossless PNG format with clean 24-bit RGB raster encoding entirely in your browser.',
     iconName: 'RefreshCw',
-    isImplemented: false,
+    isImplemented: true,
     popular: false,
-    tags: ['jpg', 'png', 'convert', 'format', 'image converter', 'lossless'],
+    tags: ['jpg', 'png', 'convert', 'format', 'image converter', 'lossless', 'jpeg to png'],
     features: [
-      'Lossless re-encoding from JPEG to PNG',
-      'Batch conversion support ready',
-      'Zero server upload requirement'
+      'Lossless re-encoding from JPEG to 24-bit PNG',
+      'Preserves original pixel dimensions exactly',
+      '100% private in-browser conversion with zero server latency',
+      'Side-by-side output preview and instant download'
     ],
     howToUse: [
-      'Select your JPEG image file.',
-      'Click Convert to generate the PNG stream.',
-      'Download the finalized PNG.'
+      'Select or drop your JPEG/JPG image file.',
+      'Review the decoded image preview and source dimensions.',
+      'Click Download PNG to save the lossless file.'
     ],
     faqs: [
       {
@@ -349,8 +360,7 @@ export const TOOLS: ToolItem[] = [
         answer: 'PNG uses lossless compression, making it ideal for diagrams, screenshots, and graphics where sharpness is paramount.'
       }
     ],
-    relatedToolIds: ['png-to-jpg', 'image-compressor', 'image-resizer'],
-    statusNote: 'Catalog Architecture Preview'
+    relatedToolIds: ['png-to-jpg', 'image-compressor', 'image-resizer']
   },
   {
     id: 'png-to-jpg',
@@ -359,27 +369,28 @@ export const TOOLS: ToolItem[] = [
     categoryName: 'Image Tools',
     description: 'Convert PNG images to lightweight JPG format with custom background color fill for transparent areas.',
     iconName: 'RefreshCw',
-    isImplemented: false,
+    isImplemented: true,
     popular: false,
-    tags: ['png', 'jpg', 'jpeg', 'convert', 'file size reduction'],
+    tags: ['png', 'jpg', 'jpeg', 'convert', 'file size reduction', 'png to jpg'],
     features: [
-      'Fast PNG to JPEG rasterization',
-      'Custom background color selector for transparent regions (default white)',
-      'Adjustable JPEG compression level'
+      'Fast PNG to JPEG rasterization directly via HTML5 Canvas',
+      'Custom background color selector for transparent regions (default white, plus custom palette)',
+      'Adjustable JPEG compression quality slider',
+      'Immediate side-by-side preview with transparency checkerboard'
     ],
     howToUse: [
       'Upload a PNG file with or without transparency.',
       'Select a background color fill for transparent areas.',
+      'Adjust the output quality if desired.',
       'Download the lightweight JPG.'
     ],
     faqs: [
       {
         question: 'What happens to transparent backgrounds in JPG?',
-        answer: 'Because JPG does not support alpha transparency, transparent areas are filled with a solid background color (typically white).'
+        answer: 'Because JPG does not support alpha transparency, transparent areas are filled with a solid background color (default white, or your custom selection).'
       }
     ],
-    relatedToolIds: ['jpg-to-png', 'image-compressor', 'image-resizer'],
-    statusNote: 'Catalog Architecture Preview'
+    relatedToolIds: ['jpg-to-png', 'image-compressor', 'image-resizer']
   },
 
   // --- PDF Tools ---

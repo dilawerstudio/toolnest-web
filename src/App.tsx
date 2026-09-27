@@ -31,6 +31,12 @@ import { Base64EncoderDecoder } from './components/tools/Base64EncoderDecoder';
 import { UnitConverter } from './components/tools/UnitConverter';
 import { BarcodeGenerator } from './components/tools/BarcodeGenerator';
 
+// Phase 3 Working Image Tools
+import { ImageCompressor } from './components/tools/ImageCompressor';
+import { ImageResizer } from './components/tools/ImageResizer';
+import { PngToJpg } from './components/tools/PngToJpg';
+import { JpgToPng } from './components/tools/JpgToPng';
+
 // Architecture Preview for other tools
 import { ToolPreviewPage } from './components/tools/ToolPreviewPage';
 
@@ -115,6 +121,14 @@ export default function App() {
             return <UnitConverter tool={tool} onToast={showToast} />;
           case 'barcode-generator':
             return <BarcodeGenerator tool={tool} onToast={showToast} />;
+          case 'image-compressor':
+            return <ImageCompressor tool={tool} onToast={showToast} />;
+          case 'image-resizer':
+            return <ImageResizer tool={tool} onToast={showToast} />;
+          case 'png-to-jpg':
+            return <PngToJpg tool={tool} onToast={showToast} />;
+          case 'jpg-to-png':
+            return <JpgToPng tool={tool} onToast={showToast} />;
           default:
             return <ToolPreviewPage tool={tool} onToast={showToast} />;
         }

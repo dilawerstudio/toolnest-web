@@ -69,6 +69,8 @@ export const Footer: React.FC = () => {
               <li><a href="#/tools/json-formatter" className="hover:text-indigo-600 transition-colors">JSON Formatter</a></li>
               <li><a href="#/tools/unit-converter" className="hover:text-indigo-600 transition-colors">Unit Converter</a></li>
               <li><a href="#/tools/barcode-generator" className="hover:text-indigo-600 transition-colors">Barcode Generator</a></li>
+              <li><a href="#/tools/image-compressor" className="hover:text-indigo-600 transition-colors">Image Compressor</a></li>
+              <li><a href="#/tools/image-resizer" className="hover:text-indigo-600 transition-colors">Image Resizer</a></li>
             </ul>
           </div>
 

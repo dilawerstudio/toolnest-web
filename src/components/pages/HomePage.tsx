@@ -98,6 +98,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
               <a href="#/tools/json-formatter" className="hover:text-indigo-600 transition-colors">JSON Formatter</a>
               <span>·</span>
               <a href="#/tools/unit-converter" className="hover:text-indigo-600 transition-colors">Unit Converter</a>
+              <span>·</span>
+              <a href="#/tools/image-compressor" className="hover:text-indigo-600 transition-colors">Image Compressor</a>
             </div>
           </div>
         </div>
