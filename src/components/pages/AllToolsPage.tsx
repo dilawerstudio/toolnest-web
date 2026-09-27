@@ -1,8 +1,17 @@
 import React, { useState, useMemo } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, LayoutGrid, FileText, Calculator, Code2, Image as ImageIcon, Files } from 'lucide-react';
 import { TOOLS, CATEGORIES } from '../../data/tools';
 import { ToolCard } from '../common/ToolCard';
 import { AdContainer } from '../common/AdContainer';
+
+const categoryIconMap: Record<string, React.ElementType> = {
+  all: LayoutGrid,
+  text: FileText,
+  utility: Calculator,
+  dev: Code2,
+  image: ImageIcon,
+  pdf: Files,
+};
 
 interface AllToolsPageProps {
   initialCategory?: string;
@@ -70,20 +79,22 @@ export const AllToolsPage: React.FC<AllToolsPageProps> = ({ initialCategory }) =
         </div>
 
         {/* Category Tabs (Interactive buttons) */}
-        <div className="flex flex-wrap gap-1.5 p-1 bg-slate-100 rounded-xl">
+        <div className="flex flex-wrap gap-1.5 p-1.5 bg-slate-100/90 rounded-xl border border-slate-200/60">
           {CATEGORIES.map((cat) => {
             const isActive = selectedCat === cat.id;
+            const Icon = categoryIconMap[cat.id] || LayoutGrid;
             return (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCat(cat.id)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-all whitespace-nowrap ${
                   isActive
-                    ? 'bg-white text-indigo-700 shadow-sm font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white text-indigo-700 shadow-xs font-semibold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
                 }`}
               >
-                {cat.name}
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-indigo-600' : 'text-slate-400'}`} />
+                <span>{cat.name}</span>
               </button>
             );
           })}

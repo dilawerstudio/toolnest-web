@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  Search, ShieldCheck, Zap, Lock, Sparkles, ArrowRight, HelpCircle, 
-  FileText, QrCode, Key, Calendar, Percent, Type, Hash, CheckCircle2 
+  Search, ShieldCheck, Zap, Lock, ArrowRight, HelpCircle, 
+  FileText, Calculator, Code2, Image as ImageIcon, Files, CheckCircle2 
 } from 'lucide-react';
 import { TOOLS } from '../../data/tools';
 import { ToolCard } from '../common/ToolCard';
@@ -12,7 +12,7 @@ interface HomePageProps {
   onSelectCategory: (cat: string) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCategory }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch }) => {
   // Curated 6 popular tools across different categories for the Featured section
   const featuredToolIds = [
     'word-counter',
@@ -50,9 +50,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-slate-50/30">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-indigo-50/50 via-white to-slate-50 border-b border-slate-200/80 pt-12 pb-16 md:pt-20 md:pb-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50/80 via-white to-slate-50/50 border-b border-slate-200/80 pt-12 pb-16 md:pt-20 md:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Subtle text trust marker (Zero-pill discipline: unboxed clean text) */}
           <div className="flex items-center justify-center gap-2 text-xs font-medium text-slate-500 mb-4">
@@ -60,7 +60,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
             <span aria-hidden="true">·</span>
             <span>100% Client-Side</span>
             <span aria-hidden="true">·</span>
-            <span className="text-emerald-700 flex items-center gap-1">
+            <span className="text-emerald-700 flex items-center gap-1 font-medium">
               <ShieldCheck className="w-3.5 h-3.5" /> Zero Server Storage
             </span>
           </div>
@@ -78,13 +78,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
           <div className="mt-8 max-w-xl mx-auto">
             <div
               onClick={onOpenSearch}
-              className="group relative flex items-center w-full px-4 py-3.5 bg-white rounded-2xl border border-slate-300 shadow-md hover:border-indigo-400 hover:shadow-lg transition-all cursor-pointer text-left"
+              className="group relative flex items-center w-full px-4 py-3.5 bg-white rounded-xl border border-slate-200 shadow-xs hover:border-indigo-400 hover:shadow-md transition-all cursor-pointer text-left"
             >
               <Search className="w-5 h-5 text-slate-400 mr-3 group-hover:text-indigo-600 transition-colors" />
               <span className="text-sm text-slate-400 flex-1">
                 Search tools (e.g. "compress", "QR", "word counter", "password")...
               </span>
-              <kbd className="hidden sm:inline-block px-2 py-1 text-[11px] font-mono text-slate-400 bg-slate-100 border border-slate-200 rounded-md">
+              <kbd className="hidden sm:inline-block px-2 py-1 text-[11px] font-mono text-slate-400 bg-slate-50 border border-slate-200 rounded-md">
                 /
               </kbd>
             </div>
@@ -132,7 +132,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
       {/* Section 1: Popular & Ready Tools */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200/80 gap-4">
             <div>
               <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-1">
                 Featured Utilities
@@ -143,7 +143,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
             </div>
             <a
               href="#/tools"
-              className="mt-2 sm:mt-0 inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
             >
               <span>View All 35 Utilities</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -159,14 +159,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
       </section>
 
       {/* Section 2: Text Tools Section */}
-      <section className="py-12 bg-slate-50/70 border-y border-slate-200/80">
+      <section className="py-12 bg-slate-50/60 border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <span className="text-xs text-slate-500 font-medium">Text Manipulation & Analysis</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Text Tools</h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200/80 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 shadow-xs">
+                <FileText className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs text-slate-500 font-medium">Text Manipulation & Analysis</span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">Text Tools</h2>
+              </div>
             </div>
-            <a href="#/tools?category=text" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
+            <a href="#/tools?category=text" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
               Browse All 5 Text Tools →
             </a>
           </div>
@@ -181,12 +186,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
       {/* Section 3: Utility & Calculator Tools Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <span className="text-xs text-slate-500 font-medium">Everyday Math, Codes & Security</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Utility Tools & Calculators</h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200/80 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center shrink-0 shadow-xs">
+                <Calculator className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs text-slate-500 font-medium">Everyday Math, Codes & Security</span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">Utility Tools & Calculators</h2>
+              </div>
             </div>
-            <a href="#/tools?category=utility" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
+            <a href="#/tools?category=utility" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
               Browse All 5 Calculators →
             </a>
           </div>
@@ -199,14 +209,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
       </section>
 
       {/* Section 4: Developer Tools Section */}
-      <section className="py-12 bg-slate-50/70 border-y border-slate-200/80">
+      <section className="py-12 bg-slate-50/60 border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <span className="text-xs text-slate-500 font-medium">Formatting, Diff, Encoders & Testing</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Developer Tools</h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200/80 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 text-sky-600 flex items-center justify-center shrink-0 shadow-xs">
+                <Code2 className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs text-slate-500 font-medium">Formatting, Diff, Encoders & Testing</span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">Developer Tools</h2>
+              </div>
             </div>
-            <a href="#/tools?category=dev" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
+            <a href="#/tools?category=dev" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
               Browse All 18 Dev Tools →
             </a>
           </div>
@@ -218,7 +233,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
           <div className="mt-8 text-center">
             <a
               href="#/tools?category=dev"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 hover:border-indigo-300 shadow-xs transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 hover:border-indigo-300 shadow-xs transition-all"
             >
               <span>Explore All 18 Developer Utilities (Regex, JSON Diff, JWT, SQL & More)</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -227,50 +242,57 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
         </div>
       </section>
 
-      {/* Section 5: Image & PDF Tools Section */}
+      {/* Section 5: Image Tools Section (Clearly Separated) */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Image Tools */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <span className="text-xs text-slate-500 font-medium">Raster & Format Optimization</span>
-                  <h3 className="text-xl font-bold text-slate-900">Image Tools</h3>
-                </div>
-                <a href="#/tools?category=image" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-                  View All (4) →
-                </a>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200/80 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 shadow-xs">
+                <ImageIcon className="w-5 h-5" />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {imageTools.map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
-                ))}
+              <div>
+                <span className="text-xs text-slate-500 font-medium">Raster & Format Optimization</span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">Image Tools</h2>
               </div>
             </div>
-
-            {/* PDF Tools */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <span className="text-xs text-slate-500 font-medium">Document Assembly & Compression</span>
-                  <h3 className="text-xl font-bold text-slate-900">PDF Tools</h3>
-                </div>
-                <a href="#/tools?category=pdf" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
-                  View All (3) →
-                </a>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {pdfTools.map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
-                ))}
-              </div>
-            </div>
+            <a href="#/tools?category=image" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
+              View All (4) →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {imageTools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Section 6: "Why Use ToolNest?" Value Section */}
+      {/* Section 6: PDF Tools Section (Clearly Separated) */}
+      <section className="py-12 bg-slate-50/60 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-slate-200/80 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-rose-600 flex items-center justify-center shrink-0 shadow-xs">
+                <Files className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs text-slate-500 font-medium">Document Assembly & Compression</span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">PDF Tools</h2>
+              </div>
+            </div>
+            <a href="#/tools?category=pdf" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
+              View All (3) →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {pdfTools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: "Why Use Our Tools?" Value Section */}
       <section className="py-16 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -286,41 +308,41 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
+            <div className="p-6 rounded-xl bg-slate-50/50 border border-slate-200/70 shadow-xs hover:shadow-sm hover:border-slate-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mb-4 shadow-xs">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-slate-900 mb-1">100% In-Browser Privacy</h3>
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">100% In-Browser Privacy</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Calculations execute in your browser's local sandbox. Your confidential text, files, and credentials never travel over the internet.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-3">
+            <div className="p-6 rounded-xl bg-slate-50/50 border border-slate-200/70 shadow-xs hover:shadow-sm hover:border-slate-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center mb-4 shadow-xs">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-slate-900 mb-1">Instant Zero-Latency Speed</h3>
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">Instant Zero-Latency Speed</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 No server queuing, cold starts, or upload delays. Results compute in milliseconds as you type or adjust parameters.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3">
+            <div className="p-6 rounded-xl bg-slate-50/50 border border-slate-200/70 shadow-xs hover:shadow-sm hover:border-slate-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center mb-4 shadow-xs">
                 <Lock className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-slate-900 mb-1">$0 Budget & No Accounts</h3>
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">$0 Budget & No Accounts</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 No subscription paywalls, no required registrations, and no credit card prompts. Truly free utility tools for everyone.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <div className="w-10 h-10 rounded-xl bg-violet-100 text-violet-700 flex items-center justify-center mb-3">
+            <div className="p-6 rounded-xl bg-slate-50/50 border border-slate-200/70 shadow-xs hover:shadow-sm hover:border-slate-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-violet-50 border border-violet-100 text-violet-600 flex items-center justify-center mb-4 shadow-xs">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-slate-900 mb-1">Mobile-First Accessibility</h3>
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">Mobile-First Accessibility</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Fully responsive UI crafted to feel natural on smartphones, tablets, and desktops with high WCAG contrast standards.
               </p>
@@ -330,25 +352,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectCatego
       </section>
 
       {/* Section 8: FAQ Section */}
-      <section className="py-16 bg-slate-50 border-t border-slate-200">
+      <section className="py-16 bg-slate-50/60 border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-1 block">
               Common Questions
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200">
-                <h3 className="text-sm sm:text-base font-semibold text-slate-900 mb-2 flex items-start gap-2">
+              <div key={idx} className="p-5 sm:p-6 rounded-xl bg-white border border-slate-200/80 shadow-xs hover:border-slate-300 transition-all">
+                <h3 className="text-sm sm:text-base font-semibold text-slate-900 mb-2 flex items-start gap-2.5">
                   <HelpCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
                   <span>{faq.q}</span>
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6.5">
                   {faq.a}
                 </p>
               </div>
